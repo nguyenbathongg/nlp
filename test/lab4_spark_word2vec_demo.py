@@ -14,8 +14,6 @@ def main():
 )
     print("Spark Session đã được tạo.")
 
-    # 2. Tải dữ liệu
-    # Đọc file JSON và tạo một DataFrame
     # 2. Tải dữ liệu từ file nén gz
     # Spark có thể đọc trực tiếp từ file nén gz
 
