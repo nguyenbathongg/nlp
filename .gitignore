@@ -41,11 +41,12 @@ env/
 # Outputs and logs
 *.log
 output/
-results/
 
 # Cache
 .cache/
 .pytest_cache/
+
+.embeddings_cache/
 
 # Distribution / packaging
 .Python
