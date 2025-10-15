@@ -194,7 +194,7 @@ python test/lab4_spark_word2vec_demo.py
 - Future: dùng FastText (subword embeddings)
 
 
-## 6. TRÍCH DẪN TÀI LIỆU
+## 5. TRÍCH DẪN TÀI LIỆU
 
 1. **Word2Vec:** Mikolov et al. (2013) - "Efficient Estimation of Word Representations in Vector Space"
 2. **GloVe:** Pennington et al. (2014) - https://nlp.stanford.edu/projects/glove/
