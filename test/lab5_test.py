@@ -17,15 +17,10 @@ from src.models.text_classifier import TextClassifier
 
 
 def main():
-    print("=" * 60)
-    print("LAB 5: TEXT CLASSIFICATION")
-    print("=" * 60)
-    print()
-
     # Load Twitter Financial News Sentiment Dataset
     print("Loading dataset from Hugging Face...")
     ds = load_dataset("zeroshot/twitter-financial-news-sentiment")
-    print("✓ Dataset loaded!")
+    print("Dataset loaded!")
     print()
     
     # Extract texts and labels from training split
@@ -54,15 +49,15 @@ def main():
     tokenizer = RegexTokenizer()
     vectorizer = CountVectorizer(tokenizer)
     classifier = TextClassifier(vectorizer)
-    print("✓ RegexTokenizer initialized")
-    print("✓ CountVectorizer initialized")
-    print("✓ TextClassifier initialized")
+    print("RegexTokenizer initialized")
+    print("CountVectorizer initialized")
+    print("TextClassifier initialized")
     print()
 
     # Train the classifier
     print("Training classifier...")
     classifier.fit(X_train, y_train)
-    print("✓ Training complete!")
+    print("Training complete!")
     print()
 
     # Make predictions on test set
@@ -77,8 +72,8 @@ def main():
         sentiment_map = {0: "Bearish", 1: "Bullish", 2: "Neutral"}
         sentiment_true = sentiment_map.get(true_label, f"Unknown({true_label})")
         sentiment_pred = sentiment_map.get(pred_label, f"Unknown({pred_label})")
-        match = "✓" if true_label == pred_label else "✗"
-        print(f"{match} Text: \"{text[:60]}...\"")
+        match = "CORRECT" if true_label == pred_label else "WRONG"
+        print(f"[{match}] Text: \"{text[:60]}...\"")
         print(f"  True: {sentiment_true}, Predicted: {sentiment_pred}")
         print()
 

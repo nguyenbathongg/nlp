@@ -25,15 +25,6 @@ from src.representations.word_embedder import WordEmbedder
 from src.models.text_classifier import TextClassifier
 
 
-def print_header(title):
-    """Print formatted section header"""
-    print()
-    print("=" * 70)
-    print(title.center(70))
-    print("=" * 70)
-    print()
-
-
 def print_metrics(name, accuracy, precision, recall, f1):
     """Print evaluation metrics in formatted way"""
     print(f"{name}:")
@@ -137,7 +128,7 @@ class NaiveBayesClassifier:
 
 
 def main():
-    print_header("LAB 5: MODEL IMPROVEMENT EXPERIMENTS")
+    print("LAB 5: MODEL IMPROVEMENT EXPERIMENTS")
     
     # Load dataset
     print("Loading Twitter Financial News dataset...")
@@ -147,14 +138,14 @@ def main():
     texts = list(train_data['text'])
     labels = list(train_data['label'])
     
-    print(f"✓ Dataset loaded: {len(texts)} samples")
+    print(f"Dataset loaded: {len(texts)} samples")
     print(f"  Label distribution: Bearish={labels.count(0)}, Bullish={labels.count(1)}, Neutral={labels.count(2)}")
     
     # Split data (80/20)
     X_train, X_test, y_train, y_test = train_test_split(
         texts, labels, test_size=0.2, random_state=42
     )
-    print(f"✓ Train/Test split: {len(X_train)}/{len(X_test)}")
+    print(f"Train/Test split: {len(X_train)}/{len(X_test)}")
     
     # Store results for comparison
     results = {}
@@ -162,7 +153,7 @@ def main():
     # ========================================================================
     # EXPERIMENT 1: Baseline (CountVectorizer + Logistic Regression)
     # ========================================================================
-    print_header("EXPERIMENT 1: Baseline (CountVectorizer + LR)")
+    print("EXPERIMENT 1: Baseline (CountVectorizer + LR)")
     print("Training baseline model...")
     
     tokenizer1 = RegexTokenizer()
@@ -180,7 +171,7 @@ def main():
     # ========================================================================
     # EXPERIMENT 2: TF-IDF Vectorizer + Logistic Regression
     # ========================================================================
-    print_header("EXPERIMENT 2: TF-IDF Improvement")
+    print("EXPERIMENT 2: TF-IDF Improvement")
     print("Training with TF-IDF vectorizer...")
     print("Expected improvement: TF-IDF down-weights common terms and")
     print("emphasizes distinctive terms, improving classification.")
@@ -204,7 +195,7 @@ def main():
     # ========================================================================
     # EXPERIMENT 3: Word2Vec Embeddings + Logistic Regression
     # ========================================================================
-    print_header("EXPERIMENT 3: Word2Vec Embeddings")
+    print("EXPERIMENT 3: Word2Vec Embeddings")
     print("Training with Word2Vec embeddings from Lab 4...")
     print("Expected improvement: Dense embeddings capture semantic meaning")
     print("better than sparse bag-of-words representations.")
@@ -229,7 +220,7 @@ def main():
     # ========================================================================
     # EXPERIMENT 4: TF-IDF + Naive Bayes
     # ========================================================================
-    print_header("EXPERIMENT 4: Naive Bayes Classifier")
+    print("EXPERIMENT 4: Naive Bayes Classifier")
     print("Training Naive Bayes with TF-IDF...")
     print("Naive Bayes is a probabilistic classifier that often works well")
     print("for text classification tasks.")
@@ -253,7 +244,7 @@ def main():
     # ========================================================================
     # FINAL COMPARISON
     # ========================================================================
-    print_header("FINAL COMPARISON - ALL EXPERIMENTS")
+    print("FINAL COMPARISON - ALL EXPERIMENTS")
     
     print(f"{'Model':<30} {'Accuracy':<12} {'Precision':<12} {'Recall':<12} {'F1 Score':<12}")
     print("-" * 78)
@@ -265,7 +256,7 @@ def main():
     # Find best model
     best_model = max(results.items(), key=lambda x: x[1]['f1'])
     print()
-    print(f"🏆 Best Model: {best_model[0]}")
+    print(f"Best Model: {best_model[0]}")
     print(f"   F1 Score: {best_model[1]['f1']:.4f}")
     
     # Analysis
@@ -284,10 +275,7 @@ def main():
     print("   Often fast and effective for text, especially with TF-IDF.")
     print("   May work better on balanced datasets.")
     print()
-    
-    print("=" * 70)
-    print("Lab 5 Model Improvement Complete!")
-    print("=" * 70)
+
 
 
 if __name__ == "__main__":

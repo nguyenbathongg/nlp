@@ -12,11 +12,6 @@ from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 import os
 
 def main():
-    print("=" * 70)
-    print("LAB 5: SPARK ML PIPELINE - SENTIMENT ANALYSIS")
-    print("=" * 70)
-    print()
-    
     # 1. Initialize Spark Session
     print("Step 1: Initializing Spark Session...")
     
@@ -31,7 +26,7 @@ def main():
         .getOrCreate()
     
     spark.sparkContext.setLogLevel("ERROR")
-    print("✓ Spark Session initialized")
+    print("Spark Session initialized")
     print()
     
     # 2. Load Data
@@ -60,7 +55,7 @@ def main():
     df = df.withColumn("label", col("sentiment_int") + 1)
     df = df.select("text", "label")
     
-    print("✓ Data loaded and labels normalized")
+    print("Data loaded and labels normalized")
     df.groupBy("label").count().orderBy("label").show()
     
     # 3. Split data into training and test sets (80/20)
@@ -75,14 +70,14 @@ def main():
     
     # Tokenizer: Splits text into words
     tokenizer = Tokenizer(inputCol="text", outputCol="words")
-    print("✓ Tokenizer configured")
+    print("Tokenizer configured")
     
     # StopWordsRemover: Removes common stop words
     stopwordsRemover = StopWordsRemover(
         inputCol="words", 
         outputCol="filtered_words"
     )
-    print("✓ StopWordsRemover configured")
+    print("StopWordsRemover configured")
     
     # HashingTF: Converts tokens to fixed-size feature vector
     hashingTF = HashingTF(
@@ -90,14 +85,14 @@ def main():
         outputCol="raw_features", 
         numFeatures=10000
     )
-    print("✓ HashingTF configured (10,000 features)")
+    print("HashingTF configured (10,000 features)")
     
     # IDF: Inverse Document Frequency
     idf = IDF(
         inputCol="raw_features", 
         outputCol="features"
     )
-    print("✓ IDF configured")
+    print("IDF configured")
     
     # 5. Configure Logistic Regression Model
     print()
@@ -108,26 +103,26 @@ def main():
         featuresCol="features", 
         labelCol="label"
     )
-    print("✓ LogisticRegression configured (maxIter=10, regParam=0.001)")
+    print("LogisticRegression configured (maxIter=10, regParam=0.001)")
     print()
     
     # 6. Assemble Pipeline
     print("Step 6: Assembling pipeline...")
     pipeline = Pipeline(stages=[tokenizer, stopwordsRemover, hashingTF, idf, lr])
-    print("✓ Pipeline assembled with 5 stages")
+    print("Pipeline assembled with 5 stages")
     print()
     
     # 7. Train the Model
     print("Step 7: Training model...")
     print("This may take a few minutes...")
     model = pipeline.fit(trainingData)
-    print("✓ Training complete!")
+    print("Training complete!")
     print()
     
     # 8. Make Predictions
     print("Step 8: Making predictions on test set...")
     predictions = model.transform(testData)
-    print("✓ Predictions complete")
+    print("Predictions complete")
     print()
     
     # Show sample predictions
