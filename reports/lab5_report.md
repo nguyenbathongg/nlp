@@ -101,13 +101,10 @@ python test/lab5_improvement_test.py
 **Challenge 2: CSV data had invalid sentiment values**
 - Solution: Filter with regex `^-?[0-9]+$` before casting to int
 
-**Challenge 3: TfidfVectorizer missing `fit()` method**
-- Solution: Added `fit()` that calls `fit_transform()` internally
-
-**Challenge 4: WordEmbedder doesn't accept tokenizer**
+**Challenge 3: WordEmbedder doesn't accept tokenizer**
 - Solution: Store tokenizer separately, manually tokenize in Word2VecClassifier
 
-**Challenge 5: Imbalanced dataset (65% Neutral)**
+**Challenge 4: Imbalanced dataset (65% Neutral)**
 - Solution: Use weighted metrics (precision, recall, F1) instead of macro averaging
 
 ---
