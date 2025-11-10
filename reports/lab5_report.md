@@ -52,11 +52,7 @@ python test/lab5_test.py
 ```
 
 **Run Spark Pipeline (Task 3):**
-```bash
-# Set Java 17 (required for PySpark)
-$env:JAVA_HOME = 'C:\Program Files\Java\jdk-17'
-$env:Path = "$env:JAVA_HOME\bin;$env:Path"
-
+```
 python test/lab5_spark_sentiment_analysis.py
 ```
 
