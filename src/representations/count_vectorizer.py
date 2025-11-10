@@ -91,3 +91,16 @@ class CountVectorizer(Vectorizer):
             result.append(count_vector)
         
         return result
+    
+    def fit_transform(self, documents: List[str]) -> List[List[int]]:
+        """
+        Learns the vocabulary and transforms documents in one step.
+        
+        Args:
+            documents (List[str]): A list of documents to learn from and transform
+            
+        Returns:
+            List[List[int]]: A list of count vectors
+        """
+        self.fit(documents)
+        return self.transform(documents)
