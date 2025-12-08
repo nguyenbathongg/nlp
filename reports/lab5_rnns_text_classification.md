@@ -194,5 +194,3 @@ jupyter notebook lab5_text_classification.ipynb
 ---
 
 ## 5. References
-
-1. copilot

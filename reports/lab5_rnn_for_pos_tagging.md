@@ -98,4 +98,3 @@ jupyter notebook lab5_pos_tagging.ipynb
 
 ## 5. References
 
-1. Github copilot

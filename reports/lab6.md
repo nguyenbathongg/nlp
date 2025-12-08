@@ -584,5 +584,4 @@ Best for:
 
 ## 5. References
 
-- Github copilot
 

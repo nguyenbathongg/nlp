@@ -110,7 +110,6 @@ python test/lab5_improvement_test.py
 ---
 
 ## 5. References
-- **github copilot**: AI Assistant :D 
 - **scikit-learn**: Machine learning library - https://scikit-learn.org/
 - **PySpark MLlib**: Spark machine learning library - https://spark.apache.org/mllib/
 - **HuggingFace datasets**: Twitter Financial News Sentiment - https://huggingface.co/datasets/zeroshot/twitter-financial-news-sentiment
